@@ -1,0 +1,103 @@
+﻿<Window x:Class="MegaCheck.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MegaCheck"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="MegaCheck" Height="800" Width="800" Icon="icocheck.png"
+        Closing="Window_Closing" Loaded="Window_Loaded" Initialized="Window_Initialized">
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!--Left grid pane-->
+        <Grid Grid.Column="0" Background="AliceBlue">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="200"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                            <TextBlock Margin="10,10,10,5" Text="Demographics" FontSize="16" FontWeight="Bold"></TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Name:" Width="60" Margin="20,5,0,5" FontSize="12" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="TEST, Patient" Name="txt_name" Margin="0,5,0,5" FontSize="12" FontWeight="Normal"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="MRN:" Width="60" Margin="20,5,0,5" FontSize="12" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="MrnNumber" Name="txt_mrn" Margin="0,5,0,5" FontSize="12" FontWeight="Normal"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Course:" Width="60" Margin="20,5,0,5" FontSize="12" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="CourseName" Name="txt_course" Margin="0,5,0,5" FontSize="12" FontWeight="Normal"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Plan:" Width="60" Margin="20,5,0,5" FontSize="12" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="PlanName" Name="txt_plan" Margin="0,5,0,5" FontSize="12" FontWeight="Normal"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="User:" Width="60" Margin="20,5,0,5" FontSize="12" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="UserName" Name="txt_user" Margin="0,5,0,5" FontSize="12" FontWeight="Normal"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                            <TextBlock Margin="10,10,10,5" Text="Settings" FontSize="16" FontWeight="Bold"></TextBlock>
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                                <TextBlock Text="Check Type:" Margin="20,5,0,5" FontSize="12" FontWeight="Bold"></TextBlock>
+                                <ComboBox  Margin="20,0,20,0" Name="cmb_checkType"></ComboBox>
+                                <TextBlock Text="Modality:" Margin="20,5,0,5" FontSize="12" FontWeight="Bold"></TextBlock>
+                                <ComboBox  Margin="20,0,20,0" Name="cmb_modality"></ComboBox>
+                                <TextBlock Text="Technique:" Margin="20,5,0,5" FontSize="12" FontWeight="Bold"></TextBlock>
+                                <ComboBox  Margin="20,0,20,0" Name="cmb_technique"></ComboBox>
+                                <TextBlock Text="Site:" Margin="20,5,0,5" FontSize="12" FontWeight="Bold"></TextBlock>
+                                <ComboBox  Margin="20,0,20,0" Name="cmb_site"></ComboBox>
+                                <Button  Margin="20,20,20,0" Content="Process"></Button>
+
+                                <Button  Margin="20,5,20,0" Content="Perform Collision Check" Name="btn_collision" Click="btn_collision_Click"></Button>
+                                <ProgressBar Margin="20,5,20,0" Height="20" Name="prog_collision" IsIndeterminate="True" Visibility="Collapsed"/>
+
+                                <Button  Margin="20,20,20,0" Content="Save Report to ARIA..." IsEnabled="False"></Button>
+                                <Button  Margin="20,5,20,0" Content="Save Report to PDF..." Name="btn_savePdf" Click="btn_savePdf_Click"></Button>
+                            </StackPanel>
+                        </StackPanel>
+                        </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Bottom">
+                        <TextBlock Margin="10,10,10,5" Text="Display" FontSize="16" FontWeight="Bold"></TextBlock>
+                        <TextBlock Background="#FFE6FFE6" Margin="20,3,20,3">
+                            <CheckBox Margin="5,5,5,5" Width="200" Content="Pass" IsChecked="True" Name="chk_pass" Click="CheckBoxChanged"/>
+                        </TextBlock>
+                        <TextBlock Background="#FFFFFFE6" Margin="20,3,20,3">
+                            <CheckBox Margin="5,5,5,5" Width="200" Content="Warn" IsChecked="True" Name="chk_warn" Click="CheckBoxChanged"/>
+                        </TextBlock>
+                        <TextBlock Background="#FFFFE6E6" Margin="20,3,20,3">
+                            <CheckBox Margin="5,5,5,5" Width="200" Content="Fail" IsChecked="True" Name="chk_fail" Click="CheckBoxChanged"/>
+                        </TextBlock>
+                        <TextBlock Background="#FFDCFFFF" Margin="20,3,20,3">
+                            <CheckBox Margin="5,5,5,5" Width="200" Content="Info" IsChecked="True" Name="chk_info" Click="CheckBoxChanged"/>
+                        </TextBlock>
+                        <Border></Border>
+                        <TextBlock Background="#FFE6E6E6" Margin="20,3,20,15">
+                            <CheckBox Margin="5,5,5,5" Width="200" Content="N/A" Name="chk_na" Click="CheckBoxChanged"></CheckBox>
+                        </TextBlock>
+                    </StackPanel>
+
+                </Grid>
+            </Grid>
+        </Grid>
+        <!--Right grid pane-->
+        <Grid Grid.Column="1">
+            <ScrollViewer Margin="0,0,0,0" Name="scroll_main">
+            <StackPanel Orientation="Vertical" Name="stk_main">
+            </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>
