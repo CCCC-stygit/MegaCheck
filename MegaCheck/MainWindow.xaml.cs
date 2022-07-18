@@ -213,9 +213,9 @@ namespace MegaCheck
             var beamChecks = new BeamChecks();
             CheckItem photonDoseAlgorithm = beamChecks.CheckPhotonDoseAlgorithm(ps, "AAA_15606_2020");
             checkList.Add(photonDoseAlgorithm);
-            CheckItem imrtOptimizerAlgorithm = beamChecks.CheckImrtOptimizerAlgorithm(ps, "PO_15606");
+            CheckItem imrtOptimizerAlgorithm = beamChecks.CheckImrtOptimizerAlgorithm(ps, "PO_1610");
             checkList.Add(imrtOptimizerAlgorithm);
-            CheckItem vmatOptimizerAlgorithm = beamChecks.CheckVmatOptimizerAlgorithm(ps, "PO_15606");
+            CheckItem vmatOptimizerAlgorithm = beamChecks.CheckVmatOptimizerAlgorithm(ps, "PO_1610");
             checkList.Add(vmatOptimizerAlgorithm);
             CheckItem heteogeneityCorr = beamChecks.CheckHeteogeneityCorr(ps);
             checkList.Add(heteogeneityCorr);
